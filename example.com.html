@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Reconnaissance Report - example.com</title>
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f6f8;
+    color: #333;
+    margin: 40px;
+}
+h1, h2, h3 {
+    color: #b30000;
+}
+.container {
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+.section {
+    margin-bottom: 30px;
+}
+pre {
+    background: #f0f0f0;
+    padding: 15px;
+    overflow-x: auto;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+table, th, td {
+    border: 1px solid #ccc;
+}
+th {
+    background: #eee;
+}
+th, td {
+    padding: 10px;
+    text-align: left;
+}
+.footer {
+    font-size: 12px;
+    color: #666;
+    margin-top: 40px;
+}
+</style>
+</head>
+
+<body>
+<div class="container">
+
+<h1>Reconnaissance Report</h1>
+<p><strong>Target Domain:</strong> example.com<br>
+<strong>Date:</strong> 21 January 2026<br>
+<strong>Assessment Type:</strong> Passive & Active Reconnaissance</p>
+
+<hr>
+
+<div class="section">
+<h2>1. Executive Summary</h2>
+<p>
+This report documents the results of an automated reconnaissance assessment conducted against the domain
+<strong>example.com</strong>. The objective was to identify publicly available information, exposed services,
+and technologies to evaluate the external attack surface. No exploitation or intrusive actions were performed.
+</p>
+</div>
+
+<div class="section">
+<h2>2. WHOIS Enumeration</h2>
+<p>
+WHOIS information for the target domain was unavailable or restricted. This is likely due to the domain being
+managed by a CDN provider and privacy controls.
+</p>
+<pre>
+Domain Information: Not publicly disclosed
+Registrar Details: Not available
+Registrant Details: Not available
+</pre>
+</div>
+
+<div class="section">
+<h2>3. DNS Enumeration</h2>
+<table>
+<tr><th>Record Type</th><th>Details</th></tr>
+<tr><td>A</td><td>104.18.27.120, 104.18.26.120</td></tr>
+<tr><td>MX</td><td>No active mail servers</td></tr>
+<tr><td>NS</td><td>hera.ns.cloudflare.com, elliott.ns.cloudflare.com</td></tr>
+<tr><td>TXT</td><td>SPF configured (v=spf1 -all)</td></tr>
+</table>
+<p>
+DNS analysis confirms that the target is protected by Cloudflare, reducing direct exposure of backend
+infrastructure.
+</p>
+</div>
+
+<div class="section">
+<h2>4. Subdomain Enumeration</h2>
+<p>
+No subdomains were discovered using certificate transparency logs. This suggests a minimal publicly exposed
+asset footprint.
+</p>
+</div>
+
+<div class="section">
+<h2>5. Port Scanning</h2>
+<table>
+<tr><th>Port</th><th>Service</th><th>Status</th></tr>
+<tr><td>80</td><td>HTTP</td><td>Open</td></tr>
+<tr><td>443</td><td>HTTPS</td><td>Open</td></tr>
+</table>
+<p>
+Only essential web services were found to be accessible.
+</p>
+</div>
+
+<div class="section">
+<h2>6. Banner Grabbing</h2>
+<pre>
+Port 80  : HTTP/1.1 200 OK (Server: Cloudflare)
+Port 443 : HTTP/1.1 400 Bad Request (Server: Cloudflare)
+</pre>
+<p>
+All responses were handled by Cloudflare, effectively masking backend services.
+</p>
+</div>
+
+<div class="section">
+<h2>7. Technology Detection</h2>
+<table>
+<tr><th>Technology</th><th>Detected</th></tr>
+<tr><td>CDN</td><td>Cloudflare</td></tr>
+<tr><td>Web Server</td><td>Cloudflare Edge</td></tr>
+<tr><td>Compression</td><td>GZIP Enabled</td></tr>
+<tr><td>CMS / Framework</td><td>Not detected</td></tr>
+</table>
+</div>
+
+<div class="section">
+<h2>8. Risk Assessment</h2>
+<table>
+<tr><th>Area</th><th>Risk Level</th></tr>
+<tr><td>WHOIS Exposure</td><td>Low</td></tr>
+<tr><td>DNS Configuration</td><td>Low</td></tr>
+<tr><td>Open Ports</td><td>Low</td></tr>
+<tr><td>Subdomains</td><td>None</td></tr>
+<tr><td>Technology Stack</td><td>Low</td></tr>
+</table>
+</div>
+
+<div class="section">
+<h2>9. Conclusion</h2>
+<p>
+The reconnaissance assessment indicates that the target domain has a strong security posture with minimal
+external exposure. The use of a CDN, restricted services, and absence of unnecessary assets significantly
+reduces the attack surface.
+</p>
+</div>
+
+<div class="footer">
+ 
+</div>
+
+</div>
+</body>
+</html>
